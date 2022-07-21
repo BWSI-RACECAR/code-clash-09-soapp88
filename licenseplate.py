@@ -28,19 +28,31 @@ class Solution:
         # return: int
         
         # TODO: Write code below to return an int with the solution to the prompt
-        combinations = 0
+        a = 0
 
-        for i in range(7):
-            if i < 3 and str[i] == '.' and combinations == 0:
-                combinations += 26
-            elif i < 3 and str[i] == '.' and combinations != 0 :
-                combinations *= 26
-            
+        for i in range(3):
+            if str[i] == '.':
+                a += 1
 
-            elif i > 3 and str[i] == '.':
-                combinations *= 10
+        n = 0
+
+        for i in range(3, 7):
+            if str[i] == '.':
+                n += 1
+
+        result = 1
+
+        if a == 1:
+            result *= 24
+        elif a == 2:
+            result *= 25 * 24
+        elif a == 3:
+            result *= 26 * 24 * 25
+
+        for i in range(7, 7 + n):
+            result *= i
         
-        return combinations
+        return result
 
 
 def main():
